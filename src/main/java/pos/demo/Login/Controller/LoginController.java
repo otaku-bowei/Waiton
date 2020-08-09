@@ -11,24 +11,30 @@ import pos.demo.Login.Service.LoginService;
 
 @EnableAsync
 @RestController
-@MapperScan("pos.demo.Login.DAO")
 public class LoginController {
 
     @Autowired
     LoginService loginService;
 
-    @RequestMapping(value = "/in")
-    //@Async
-    public ModelAndView index(ModelAndView mav){
+    @RequestMapping(value = "in")
+    public ModelAndView login(ModelAndView mav){
         mav.setViewName("login");
         return mav;
     }
 
-    @Async
-    @RequestMapping(value = "o_test/login",method = RequestMethod.POST)
+    @RequestMapping(value = "index")
+    public ModelAndView index(ModelAndView mav){
+        mav.setViewName("index");
+        return mav;
+    }
+
+
+    @RequestMapping(value = "login",method = RequestMethod.POST)
     @ResponseBody
-    public boolean checkPassword(@RequestParam("username") String email, @RequestParam("password") String password){
-        return loginService.checkPassword(email,null,password);
+    public String checkPassword(@RequestParam("username") String email, @RequestParam("password") String password){
+        String s =  loginService.checkPassword(email,password);
+        System.out.println(s);
+        return s;
     }
 
 

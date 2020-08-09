@@ -27,7 +27,7 @@ spring:
     prefix: classpath:/static/
     cache: false
     suffix: .html
-    mode: HTML5
+    mode: HTML
 
   mybatis:
     configuration:
@@ -37,3 +37,6 @@ spring:
    # store-type: jdbc
     #jdbc:
      # table-name: SPRING_SESSION
+
+  redis:
+    host: 192.168.224.128
