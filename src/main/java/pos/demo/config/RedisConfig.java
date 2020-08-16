@@ -1,13 +1,11 @@
 package pos.demo.config;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import pos.demo.Login.Entity.RedisTest;
+import pos.demo.login.Entity.RedisTest;
 
 import java.net.UnknownHostException;
 

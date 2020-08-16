@@ -1,4 +1,4 @@
-package pos.demo.Login.DAO;
+package pos.demo.login.DAO;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

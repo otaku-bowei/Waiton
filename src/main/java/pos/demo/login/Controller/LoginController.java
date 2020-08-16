@@ -1,12 +1,13 @@
-package pos.demo.Login.Controller;
+package pos.demo.login.Controller;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pos.demo.Login.Service.LoginService;
+import pos.demo.login.Entity.RedisTest;
+import pos.demo.login.Service.LoginService;
+
+import javax.servlet.http.HttpSession;
 
 
 @EnableAsync
@@ -31,9 +32,10 @@ public class LoginController {
 
     @RequestMapping(value = "login",method = RequestMethod.POST)
     @ResponseBody
-    public String checkPassword(@RequestParam("username") String email, @RequestParam("password") String password){
+    public String checkPassword(HttpSession session, @RequestParam("username") String email, @RequestParam("password") String password){
         String s =  loginService.checkPassword(email,password);
         System.out.println(s);
+        session.setAttribute("RedisTest", new RedisTest("阮涛",12,"12345"));
         return s;
     }
 

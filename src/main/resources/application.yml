@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: root
-    password: root1
-    url: jdbc:mysql://39.108.113.47:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    password: 123456
+    url: jdbc:mysql://39.108.113.47:3306/Waiton?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
@@ -33,10 +33,11 @@ spring:
     configuration:
       map-underscore-to-camel-case: true
 
-  #session:
-   # store-type: jdbc
-    #jdbc:
-     # table-name: SPRING_SESSION
-
   redis:
-    host: 192.168.224.128
+    host: 39.108.113.47
+    port: 6379
+    password:
+    timeout: 1000
+
+  session:
+    store-type: redis

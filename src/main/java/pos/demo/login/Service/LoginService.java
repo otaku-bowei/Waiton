@@ -1,10 +1,9 @@
-package pos.demo.Login.Service;
+package pos.demo.login.Service;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import pos.demo.Login.DAO.ClientMapper;
+import pos.demo.login.DAO.ClientMapper;
 
 //@Async
 @Service

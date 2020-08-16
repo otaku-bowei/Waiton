@@ -1,4 +1,4 @@
-package pos.demo.Login.Entity;
+package pos.demo.login.Entity;
 
 public class ClientEntity {
     private String email;

@@ -1,0 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#leftMenu{
+    width: 100px;
+    background-color: white;
+    height: 100px;
+}
