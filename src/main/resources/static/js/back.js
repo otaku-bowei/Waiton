@@ -1,26 +1,23 @@
 $(function(){
 
-    /*
+    
         $.ajax({
-            url:'/o_test/login',
+            url:'getUsername',
             type: 'post',
-            async : true,
+            async : false,
             // 设置的是请求参数
             data: { 'username':iusername.eq(0).val(), 'password':ipassword.eq(0).val() },
-            dataType: 'boolean',
+            dataType: 'text',
             success: function(data) {
-                alert(typeof data);
-                if(data)
-                {
-                    //window.location.href('back.html');
-                }
+                //alert(typeof data);
+            	$('#loginIdText').html(data);
                 
             },
             error:function(err){
                 alert('发生错误');
             }
         });
-	*/
+	
     $('#topNav').width($(window).width()-100);
     $('#backNav').width($(window).width()-100);
     $('#backRightContent').outerWidth($('#backNav').outerWidth()-$('#backLeft').outerWidth());

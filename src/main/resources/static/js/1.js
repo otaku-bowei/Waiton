@@ -4,9 +4,7 @@ window.onload = function () {
     var btn_loginin = document.getElementsByClassName("loginin");
     var btn_register = document.getElementsByClassName("register");
     var xhr = null;
-
     btn_loginin[0].onclick = function () {
-
     }
 }
     
