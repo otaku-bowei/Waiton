@@ -10,6 +10,8 @@ $(function(){
             dataType: 'text',
             success: function(data) {
                 //alert(typeof data);
+            	
+            	
             	$('#loginIdText').html(data);
                 
             },
