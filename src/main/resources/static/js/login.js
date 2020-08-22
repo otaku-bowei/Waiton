@@ -18,7 +18,13 @@ window.onload=function(){
                 url:"login",
                 success: function(data) {
                     alert("hello world" + data);
-                    if(data == "true"){
+                	//alert(typeof data);
+                    if(data == true){
+                    	//成功后跳转
+                    	alert("hello world" + data);
+                    	
+                    
+                    	window.location.href='back.html';
                     }
                 },
                 error : function (err) {
