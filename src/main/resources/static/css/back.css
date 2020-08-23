@@ -189,4 +189,21 @@ body{
 #backRightContent .displayNone{
     display: none;
 }
+#backRightContent ul{
+    list-style: none;
+}
+#backRightContent li{
+    height: 200px;
+    margin-top: 15px;
+    border-bottom: 1px rgb(126, 126, 126) solid;
+}
+#backRightContent li .img_li_list{
+   background-image: url(../images/user.png);
+   background-position: center center;
+   display: inline-block;
+   width:200px;
+   height: 150px;
+    margin-left: 100px;    
+    margin-top: 25px;
+}
 

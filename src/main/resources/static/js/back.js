@@ -1,12 +1,9 @@
 $(function(){
-
-    
         $.ajax({
             url:'getUsername',
             type: 'post',
             async : false,
             // 设置的是请求参数
-            data: { 'username':iusername.eq(0).val(), 'password':ipassword.eq(0).val() },
             dataType: 'text',
             success: function(data) {
                 //alert(typeof data);
