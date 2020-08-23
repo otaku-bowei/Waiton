@@ -1,6 +1,8 @@
 package pos.demo.login.Entity;
 
-public class ClientEntity {
+import java.io.Serializable;
+
+public class ClientEntity implements Serializable {
     private String email;
     private String password;
     private String username;
