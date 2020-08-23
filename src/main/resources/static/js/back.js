@@ -2,11 +2,11 @@ $(function(){
         $.ajax({
             url:'getUsername',
             type: 'post',
-            async : false,
+            async : true,
             // 设置的是请求参数
             dataType: 'text',
             success: function(data) {
-                //alert(typeof data);
+                alert(data);
             	
             	
             	$('#loginIdText').html(data);

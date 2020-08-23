@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pos.demo.login.Entity.ClientEntity;
 import pos.demo.login.Entity.RedisTest;
 import pos.demo.login.Service.LoginService;
 
@@ -35,9 +36,16 @@ public class LoginController {
     public String checkPassword(HttpSession session, @RequestParam("username") String email, @RequestParam("password") String password){
         String s =  loginService.checkPassword(email,password);
         System.out.println(s);
-        session.setAttribute("RedisTest", new RedisTest("阮涛",12,"12345"));
+        session.setAttribute("user", new ClientEntity(email,password,loginService.getUsername(email)));
         return s;
     }
 
+    @RequestMapping(value = "getUsername",method = RequestMethod.POST)
+    @ResponseBody
+    public String returnUsername(HttpSession session){
+        String s = ((ClientEntity)session.getAttribute("user")).getUsername();
+        System.out.println();
+        return s;
+    }
 
 }

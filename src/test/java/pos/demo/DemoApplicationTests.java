@@ -10,7 +10,7 @@ import pos.demo.login.Entity.RedisTest;
 import pos.demo.login.Service.LoginService;
 
 @SpringBootTest
-@MapperScan("pos.demo.Login.DAO")
+@MapperScan("pos.demo.login.DAO")
 class DemoApplicationTests {
 
     @Test
@@ -28,7 +28,7 @@ class DemoApplicationTests {
 
     @Test
     void mysqlTest(){
-        System.out.println(loginService.checkPassword("252795767@qq.com","wbw123."));
+        System.out.println(loginService.getUsername("252795767@qq.com"));
     }
 
 

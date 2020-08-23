@@ -7,7 +7,7 @@ import pos.demo.login.DAO.ClientMapper;
 
 //@Async
 @Service
-@MapperScan("pos.demo.Login.DAO")
+@MapperScan("pos.demo.login.DAO")
 public class LoginService {
 
     @Autowired
@@ -34,5 +34,16 @@ public class LoginService {
 
     }
 
-
+    /*
+     * @author 王柏伟
+     * @param email  登录邮件
+     * @return string 返回该用户登录的邮箱对应的用户名
+     */
+    public String getUsername(String email){
+        String p=clientMapper.getUsername(email);
+        if (p==null){
+            System.out.println("找不到该用户");
+        }
+        return p;
+    }
 }

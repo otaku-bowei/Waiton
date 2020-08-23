@@ -15,5 +15,11 @@ public interface ClientMapper {
     @Select("select password from client where username=\'${loginUsername}\' ")
     public String checkPasswordByUsername(@Param("loginUsername") String loginUsername);
 
+    /*
+    ***根据邮箱获取用户名
+    */
+    @Select("select username from client where email=\'${email}\' ")
+    public String getUsername(@Param("email") String email);
+
 
 }

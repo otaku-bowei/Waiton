@@ -41,3 +41,4 @@ spring:
 
   session:
     store-type: redis
+    timeout: 10000
