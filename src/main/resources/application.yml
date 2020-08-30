@@ -42,3 +42,18 @@ spring:
   session:
     store-type: redis
     timeout: 10000
+
+  mail:
+    password: DQCAEQVEPNJPYKIT
+    host: smtp.163.com
+    username: defsoul_bw@163.com
+    default-encoding: UTF-8
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+
+
