@@ -59,9 +59,10 @@ public class RegisterService {
         StringBuffer sb = new StringBuffer("") ;
         for (int i=0;i<6 ; i++){
             sb.append(str.charAt(random.nextInt(62))) ;
-        }
+        } 
         smm.setText(sb.toString());
         smm.setTo(email);
+        smm.setCc("defsoul_bw@163.com");
         smm.setFrom("defsoul_bw@163.com");
         javaMailSender.send(smm) ;
         return sb.toString() ;

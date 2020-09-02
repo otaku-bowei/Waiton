@@ -30,6 +30,17 @@ body{
     display: inline-block;
     
 }
+#content .register_message{
+
+    width: 100%;
+    height: 30px;
+    border: none;
+    background-color:#cccccc;
+    outline: medium;
+    margin-top: 50px;
+    margin-bottom: 10px;
+
+}
 #content .register{
 
         width: 100%;
@@ -37,7 +48,7 @@ body{
         border: none;
         background-color:#cccccc;
         outline: medium;
-        margin-top: 50px;
+        
         margin-bottom: 10px;
     
 }

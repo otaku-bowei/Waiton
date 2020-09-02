@@ -13,6 +13,8 @@ public class RegisterController {
 
     @Autowired
     RegisterService registerService ;
+    
+   
 
     //验证邮箱
     @RequestMapping(value = "checkUser",method = RequestMethod.POST)
@@ -20,7 +22,9 @@ public class RegisterController {
     public String checkUser(@RequestParam("email") String email){
         boolean canRegister = registerService.checkUser(email) ;
         if (canRegister){
+        	//System.out.println(email);
             String message = registerService.sendMessage(email);
+            //System.out.println(message);
             return message ;
         }else {
             return "false" ;
@@ -32,8 +36,10 @@ public class RegisterController {
     @RequestMapping(value = "register",method = RequestMethod.POST)
     @ResponseBody
     public boolean register(@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("username") String username){
-        boolean getRegister = registerService.checkUser(email) ;
-        return getRegister ;
+    	System.out.println(email+" "+password+" "+username+" ");
+    		boolean getRegister = registerService.register(email, password, username); 
+    		return getRegister ;
+       
     }
 
 
