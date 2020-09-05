@@ -56,7 +56,7 @@ function checkEmailExist(event){
                 alert("发生错误");
             }
         });
-    },2000);
+    },1000);
         
 }
 
