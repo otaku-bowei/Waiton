@@ -6,5 +6,5 @@ import java.util.Map;
 
 public interface Messages {
 
-    static Map<HttpSession,String> messages = new HashMap<HttpSession, String>();
+    static Map<String,String> messages = new HashMap<String, String>();
 }
