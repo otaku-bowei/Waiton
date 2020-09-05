@@ -32,12 +32,13 @@ public class RegisterController {
     }
 
     //发送验证码
-    @RequestMapping(value = "checkUser",method = RequestMethod.POST)
+    @RequestMapping(value = "sendMessage",method = RequestMethod.POST)
     @ResponseBody
     public void sendMessage(HttpSession session , @RequestParam("email") String email){
         String message = registerService.sendMessage(email) ;
-        Messages.messages.put(session,message) ;
-
+        System.out.println(message);
+        Messages.messages.put(session,message);
+        System.out.println(Messages.messages.get(session));
     }
 
     //注册邮箱，数据传到数据库记录
@@ -47,7 +48,9 @@ public class RegisterController {
                             @RequestParam("password") String password,
                             @RequestParam("username") String username,
                             @RequestParam("message") String message){
+    	System.out.println(Messages.messages.get(session));
         boolean messageRight = message.equals((String)Messages.messages.get(session)) ;
+        System.out.println(email+" "+password+" "+username+" "+message+" "+messageRight+" "+Messages.messages.get(session));
         if (messageRight){
             System.out.println(email+" "+password+" "+username+" ");
             boolean getRegister = registerService.register(email, password, username);
@@ -57,7 +60,4 @@ public class RegisterController {
         }
 
     }
-
-
-
 }

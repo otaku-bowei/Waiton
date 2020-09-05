@@ -2,11 +2,11 @@ $(function(){
     /*
         r_email:
     */
-    var r_email=$('.r_email').eq(0);
-    var r_password=$('.r_password:first');
-    var r_username=$('.r_username:first');
+    var text_email=$('.r_email').eq(0);
+    var text_password=$('.r_password:first');
+    var text_username=$('.r_username:first');
     var timeout_checkEmailExist=null;
-    var check_message=null;
+    
    // $('.r_password_again').on('input propertychange',checkPassword);
     //$('.r_password').on('input propertychange',checkPassword);
     //$('.back').on('click',function back(){
@@ -14,7 +14,7 @@ $(function(){
     //});
 
     //input propertychange :文本变化事件
-    r_email.on('input propertychange',{obj:r_email,timeout:timeout_checkEmailExist},checkEmailExist)
+    text_email.on('input propertychange',{email:text_email,timeout:timeout_checkEmailExist},checkEmailExist)
     
     //注册按钮事件
     
@@ -33,7 +33,7 @@ function checkEmailExist(event){
             type: "POST",
             async : true,
             // 设置的是请求参数
-            data: { email:event.data.obj.val()},
+            data: { email:event.data.email.val()},
             dataType: "text",
             url:"checkUser",
             success: function(data) {
@@ -46,18 +46,39 @@ function checkEmailExist(event){
                 }
                 else
                 {
-                    //check_message=data;
-                    $('.register').on('click',{registermessage:data},inputRegister);
+                    //btn_register_message绑定点击事件
+                    $('.btn_register_message').on('click',{email:event.data.email},requestMessageSend);
                     $('.email_check:eq(0)').html("该邮箱可以使用").css('display','inline').css('color','green').css('font-size','12px');
                 }
                 
             },
-            error : function (err) {
+            error : function(err) {
                 alert("发生错误");
             }
         });
     },1000);
         
+}
+
+
+//请求发送验证码
+function requestMessageSend(event){
+    alert(1);
+    alert(event.data.email);
+    $.ajax({
+        type: "POST",
+        async : true,
+        data: {email:event.data.email.val()},
+        dataType: "text",
+        url:"sendMessage",
+        success: function(data) {
+                alert('验证码已发送');
+                $('.register').on('click',inputRegister);
+        },
+        error : function (err) {
+            alert("发生错误");
+        }
+    });
 }
 
 //检查账号名是否为空
@@ -68,21 +89,20 @@ function checkUsernameIsNull(){
         return false;
     }
 }
+
 //注册按钮事件实现注册
 function inputRegister(event){
     //checkUsernameIsNull();
-    alert($('.r_check_user_message').val());
-    alert(event.data.registermessage);
-    if($('.r_check_user_message:eq(0)').val()==event.data.registermessage){
+    //alert($('.r_check_user_message').val());
     $.ajax({
         type: "POST",
         async : true,
         // 设置的是请求参数
-        data: {email:$('.r_email').val(),username:$('.r_username:first').val(), password:$('.r_password:first').val()},
+        data: {email:$('.r_email').val(),username:$('.r_username:first').val(), password:$('.r_password:first').val(),message:$('.r_check_user_message').val()},
         dataType: "text",
         url:"register",
         success: function(data) {
-            //alert(data);
+            alert(data);
             switch(data)
             {
                 case "true":{
@@ -104,10 +124,6 @@ function inputRegister(event){
             alert("发生错误");
         }
     });
-    }
-    else{
-        alert('注册错误');
-    }
 }
 
 
