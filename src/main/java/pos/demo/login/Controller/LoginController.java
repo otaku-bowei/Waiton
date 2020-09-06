@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pos.demo.login.Entity.ClientEntity;
-import pos.demo.login.Entity.RedisTest;
+import pos.demo.common.DateFormat;
+import pos.demo.login.Entity.User;
 import pos.demo.login.Service.LoginService;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 
 @EnableAsync
@@ -33,17 +34,18 @@ public class LoginController {
 
     @RequestMapping(value = "login",method = RequestMethod.POST)
     @ResponseBody
-    public String checkPassword(HttpSession session, @RequestParam("username") String email, @RequestParam("password") String password){
-        String s =  loginService.checkPassword(email,password);
+    public String checkPassword(HttpSession session, @RequestParam("username") String email,
+                                @RequestParam("password") String password,@RequestParam("clientType") int clientType){
+        String s =  loginService.checkPassword(email,password,clientType);
         System.out.println(s);
-        session.setAttribute("user", new ClientEntity(email,password,loginService.getUsername(email)));
+        session.setAttribute("user", new User(email,password,loginService.getUsername(email,clientType),clientType,new Date()));
         return s;
     }
 
     @RequestMapping(value = "getUsername",method = RequestMethod.POST)
     @ResponseBody
     public String returnUsername(HttpSession session){
-        String s = ((ClientEntity)session.getAttribute("user")).getUsername();
+        String s = ((User)session.getAttribute("user")).getUsername();
         System.out.println();
         return s;
     }

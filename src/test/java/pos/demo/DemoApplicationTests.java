@@ -47,13 +47,13 @@ class DemoApplicationTests {
 
     @Test
     void mysqlTest(){
-        System.out.println(loginService.getUsername("252795767@qq.com"));
+        System.out.println(loginService.getUsername("123456@qq.com",1));
     }
 
 
     @Test
     void registerTest(){
-        boolean b = registerService.register("123456@qq.com","123456654321","注册测试");
+        boolean b = registerService.register("123456@qq.com","123456654321","注册测试",1);
         System.out.println(b);
     }
 

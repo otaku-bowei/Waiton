@@ -18,10 +18,11 @@ public class LoginService {
     * @param loginEmail  登录邮件
     * @param loginUsername  登录用户名字
     * @param password 登录输入的密码
+    * @param clientType 登录对象类型
     * @return boolean 返回该用户登录的密码是否正确，返回布尔类型
      */
-    public String checkPassword(String loginEmail,String password){
-        String p=clientMapper.checkPasswordByEmail(loginEmail);
+    public String checkPassword(String loginEmail,String password,int clientType){
+        String p=clientMapper.checkPasswordByEmail(loginEmail,clientType);
         System.out.println(p);
         String s;
         if (p!=null && password.equals(p)){
@@ -39,8 +40,8 @@ public class LoginService {
      * @param email  登录邮件
      * @return string 返回该用户登录的邮箱对应的用户名
      */
-    public String getUsername(String email){
-        String p=clientMapper.getUsername(email);
+    public String getUsername(String email,int clientType){
+        String p=clientMapper.getUsername(email,clientType);
         if (p==null){
             System.out.println("找不到该用户");
         }

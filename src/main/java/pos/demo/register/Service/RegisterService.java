@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
-import pos.demo.login.DAO.ClientMapper;
-import pos.demo.login.Entity.ClientEntity;
+import pos.demo.common.DateFormat;
+import pos.demo.login.Entity.User;
 import pos.demo.register.DAO.ClientRegister;
 
 import java.util.Random;
@@ -25,9 +25,10 @@ public class RegisterService {
     /*  检测该邮箱是否已经注册过
      *@author    王柏伟
      * @param    email   邮箱地址
+     * @param    clientType 登录对象类型
      **/
-    public boolean checkUser(String email){
-        ClientEntity client = clientRegister.checkUser(email) ;
+    public boolean checkUser(String email,int clientType){
+        User client = clientRegister.checkUser(email,clientType) ;
         //不存在返回true，表示可以注册
         if (client==null){
             return true ;
@@ -42,8 +43,8 @@ public class RegisterService {
      * @param    password    密码
      * @param    username    用户名
      **/
-    public boolean register(String email , String password , String username){
-        boolean getRegister = clientRegister.register(email, password, username) ;
+    public boolean register(String email , String password , String username,int clientType){
+        boolean getRegister = clientRegister.register(email, password, username,clientType, DateFormat.getTimeNow()) ;
         return getRegister ;
     }
 

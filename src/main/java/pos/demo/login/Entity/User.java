@@ -1,19 +1,25 @@
 package pos.demo.login.Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class ClientEntity implements Serializable {
+
+public class User implements Serializable {
     private String email;
     private String password;
     private String username;
+    private int clientType ;
+    private Date updateDatetime ;
 
-    public ClientEntity(){
+    public User(){
     }
 
-    public ClientEntity(String email, String password, String username) {
+    public User(String email, String password, String username, int clientType, Date updateDatetime) {
         this.email = email;
         this.password = password;
         this.username = username;
+        this.clientType = clientType;
+        this.updateDatetime = updateDatetime;
     }
 
     public String getEmail() {
@@ -40,6 +46,22 @@ public class ClientEntity implements Serializable {
         this.username = username;
     }
 
+    public int getClientType() {
+        return clientType;
+    }
+
+    public void setClientType(int clientType) {
+        this.clientType = clientType;
+    }
+
+    public Date getUpdateDatetime() {
+        return updateDatetime;
+    }
+
+    public void setUpdateDatetime(Date updateDatetime) {
+        this.updateDatetime = updateDatetime;
+    }
+
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -47,10 +69,10 @@ public class ClientEntity implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj.getClass()!= ClientEntity.class){
+        if (obj.getClass()!= User.class){
             return false;
         }
-        ClientEntity le=(ClientEntity)obj;
+        User le=(User)obj;
         if (le.email.equals(this.email)){
             return true;
         }else {

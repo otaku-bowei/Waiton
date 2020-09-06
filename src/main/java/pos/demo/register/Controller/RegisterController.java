@@ -22,8 +22,8 @@ public class RegisterController {
     //验证邮箱
     @RequestMapping(value = "checkUser",method = RequestMethod.POST)
     @ResponseBody
-    public String checkUser(@RequestParam("email") String email){
-        boolean canRegister = registerService.checkUser(email) ;
+    public String checkUser(@RequestParam("email") String email,@RequestParam("clientType") int clientType){
+        boolean canRegister = registerService.checkUser(email,clientType) ;
         if (canRegister){
         	return "true" ;
         }else {
@@ -45,11 +45,12 @@ public class RegisterController {
     public boolean register(HttpSession session ,@RequestParam("email") String email,
                             @RequestParam("password") String password,
                             @RequestParam("username") String username,
-                            @RequestParam("message") String message){
+                            @RequestParam("message") String message,
+                            @RequestParam("message") int clientType){
         boolean messageRight = message.equals((String)Messages.messages.get(session.getId())) ;
         if (messageRight){
             System.out.println(email+" "+password+" "+username);
-            boolean getRegister = registerService.register(email, password, username);
+            boolean getRegister = registerService.register(email, password, username,clientType);
             return getRegister ;
         }else {
             return false ;
