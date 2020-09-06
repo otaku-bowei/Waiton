@@ -36,8 +36,6 @@ window.onload=function(){
                     if(data == "true"){
                     	//成功后跳转
                     	alert("hello world" + data);
-                    	
-    
                     	window.location.href='back.html';
                     }
                 },
