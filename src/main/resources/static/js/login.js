@@ -4,26 +4,40 @@ window.onload=function(){
     var btn_loginin=$('.loginin');
     var btn_register=$('.register');
     var content=$('.content');
+    var radio_ClientType=$('.radioClientType');
 
     openOpacity();
     //opacity(content,0.1,1);
 
+
        btn_loginin.eq(0).on('click',function(){
+           //var ClientType_check;
+           /*
+           if(radio_ClientType.eq(0).check())
+           {
+               ClientType_check=radio_ClientType.eq(0).val();
+           }
+           else{
+               ClientType_check=radio_ClientType.eq(1).val();
+           }*/
+           ClientType_check=(radio_ClientType.eq(0).attr('checked')==1?ClientType_check=radio_ClientType.eq(0).val():ClientType_check=radio_ClientType.eq(1).val());
+           alert(ClientType_check);
+
             $.ajax({
                 type: "POST",
                 async : true,
                 // 设置的是请求参数
-                data: { username:iusername.eq(0).val(), password:ipassword.eq(0).val() },
-                dataType: "json",
+                data: { username:iusername.eq(0).val(), password:ipassword.eq(0).val(),clientType:ClientType_check},
+                dataType: "text",
                 url:"login",
                 success: function(data) {
                     alert("hello world" + data);
                 	//alert(typeof data);
-                    if(data == true){
+                    if(data == "true"){
                     	//成功后跳转
                     	alert("hello world" + data);
                     	
-                    
+    
                     	window.location.href='back.html';
                     }
                 },

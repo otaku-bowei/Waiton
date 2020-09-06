@@ -46,7 +46,7 @@ public class RegisterController {
                             @RequestParam("password") String password,
                             @RequestParam("username") String username,
                             @RequestParam("message") String message,
-                            @RequestParam("message") int clientType){
+                            @RequestParam("clientType") int clientType){
         boolean messageRight = message.equals((String)Messages.messages.get(session.getId())) ;
         if (messageRight){
             System.out.println(email+" "+password+" "+username);

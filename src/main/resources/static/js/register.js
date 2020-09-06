@@ -33,7 +33,7 @@ function checkEmailExist(event){
             type: "POST",
             async : true,
             // 设置的是请求参数
-            data: { email:event.data.email.val()},
+            data: {email:event.data.email.val(),clientType:1},
             dataType: "text",
             url:"checkUser",
             success: function(data) {
@@ -98,7 +98,9 @@ function inputRegister(event){
         type: "POST",
         async : true,
         // 设置的是请求参数
-        data: {email:$('.r_email').val(),username:$('.r_username:first').val(), password:$('.r_password:first').val(),message:$('.r_check_user_message').val()},
+        data: {email:$('.r_email').val(),username:$('.r_username:first').val(), password:$('.r_password:first').val(),message:$('.r_check_user_message').val()
+           ,clientType:1
+        },
         dataType: "text",
         url:"register",
         success: function(data) {

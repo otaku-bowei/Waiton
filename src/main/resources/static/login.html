@@ -23,7 +23,16 @@
 		<div class=divUsrname><i class="userIcon"></i><input type="text" name="username" class="username" placeholder="请输入账号"></div>
 		
 		<div class="divPassword"><i class="passwordIcon"></i><input type="password" name="password" class="password" placeholder="请输入密码"></div>
-		<br>
+		<span id="loginType">登录方式</span>
+		<label>
+			<input type="radio" name="clientType" class="radioClientType" value="0">
+			<span class="radioSpan">卖</span>
+		</label>
+		<label>
+			<input type="radio" name="clientType" class="radioClientType" value="1">
+			<span class="radioSpan">买</span>
+		</label>
+		
 		<input class="loginin" value="登录" type="submit">
 		<input class="register" value="注册" type="submit">
 	</div>
