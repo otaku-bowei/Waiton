@@ -7,7 +7,7 @@ $(function(){
     var text_username=$('.r_username:first');
     var timeout_checkEmailExist=null;
     
-   // $('.r_password_again').on('input propertychange',checkPassword);
+    $('.r_password_again').on('input propertychange',checkPassword);
     //$('.r_password').on('input propertychange',checkPassword);
     //$('.back').on('click',function back(){
     //    window.location.href='login.html';
@@ -28,6 +28,7 @@ $(function(){
 //检测该邮箱是否已注册
 function checkEmailExist(event){
     clearTimeout(event.data.timeout);
+    $('.btn_register_message').off('click',requestMessageSend);
     event.data.timeout=setTimeout(function(){
         $.ajax({
             type: "POST",
@@ -63,17 +64,18 @@ function checkEmailExist(event){
 
 //请求发送验证码
 function requestMessageSend(event){
-    alert(1);
-    alert(event.data.email);
+    $('.register').off('click',inputRegister);
     $.ajax({
         type: "POST",
         async : true,
-        data: {email:event.data.email.val()},
+        data: {email:$('.r_email:eq(0)').val()},
         dataType: "text",
         url:"sendMessage",
         success: function(data) {
                 alert('验证码已发送');
                 $('.register').on('click',inputRegister);
+                sendMessageInterval();
+                
         },
         error : function (err) {
             alert("发生错误");
@@ -144,4 +146,36 @@ function checkPassword(){
     if($('.r_password').val()==$('.r_password_again').val()){
         $('.password_check').eq(0).css('display','none');
     }
+}
+
+//判断邮箱input的合法性
+function checkEmailIsTrue(){
+    //loading
+}
+
+
+
+
+//发送验证码计时器
+function sendMessageInterval(){
+    $('.btn_register_message').css('background-color','rgb(201, 201, 201)').val('验证码已发送').off('click');
+    var span_timeOut=30;
+    var timeOut=null
+    timeOut=setInterval(function(){
+        $('#span_register_message').html(span_timeOut);
+        span_timeOut--;
+        if(span_timeOut==0)
+        {
+            
+            $('#span_register_message').html("");
+            $('.btn_register_message').val("发送验证码");
+            $('.btn_register_message').css('background-color','');
+            $('.btn_register_message').on('click',requestMessageSend);
+            clearInterval(timeOut);
+            return true;
+            //$('.span_register_message').html("");
+        }
+    },1000);
+    //$('.span_register_message').html("");
+    //alert("wan");
 }

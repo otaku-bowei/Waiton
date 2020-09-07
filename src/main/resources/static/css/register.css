@@ -1,7 +1,7 @@
 *{
     padding: 0px;
     margin: 0px;
-    color: #aaaaaa;
+    color: rgb(107, 106, 106);
 }
 body{
     background-color: #cccccc;
@@ -24,38 +24,47 @@ body{
     outline: medium;
     margin-top: 10px;
 }
-#content span
+#content .register_input_span
 {
     min-width: 120px;
     display: inline-block;
     
 }
-#content .register_message{
+input[type='submit']:hover{
+    background-color: rgb(206, 206, 206);
+}
+#content .btn_register_message{
 
-    width: 100%;
+    width: 80%;
     height: 30px;
     border: none;
-    background-color:#cccccc;
+    background-color:rgb(161, 160, 160);
     outline: medium;
     margin-top: 50px;
     margin-bottom: 10px;
-
+    margin-left: 40px;
+    margin-right: 10px;
 }
 #content .register{
 
-        width: 100%;
+        width: 80%;
         height: 30px;
         border: none;
-        background-color:#cccccc;
+        background-color:rgb(161, 160, 160);
         outline: medium;
-        
         margin-bottom: 10px;
+        margin-left: 40px;
+        
     
 }
 #content .back{
-    width: 100%;
+    width: 80%;
     height: 30px;
     border: none;
-    background-color:#cccccc;
+    background-color:rgb(161, 160, 160);
     outline: medium;
+    margin-left: 40px;
+}
+#content input[type='submit']:hover{
+    background-color: rgb(201, 201, 201);
 }
