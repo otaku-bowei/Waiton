@@ -6,7 +6,8 @@ window.onload=function(){
     var content=$('.content');
     var radio_ClientType=$('.radioClientType');
 
-    openOpacity();
+    //openOpacity();
+    content.fadeIn(1000);
     //opacity(content,0.1,1);
 
 
@@ -66,6 +67,9 @@ window.onload=function(){
         window.location.href='register.html';
     });
    }
+
+   //oldtest
+   /*
    function openOpacity(){
         var openOpacity=null;
         var thisOpacity=null;
@@ -79,7 +83,7 @@ window.onload=function(){
             }
        },80);
        
-   }
+   }*/
 
    
   

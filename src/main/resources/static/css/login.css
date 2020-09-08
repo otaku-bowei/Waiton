@@ -23,7 +23,7 @@ body{
 	margin-right: auto;
 	border-radius: 10px;
 	background-image: linear-gradient(to top, skyblue,#fff);
-	opacity: 0.5;
+	display: none;
 }
 .content input{
 	margin-bottom: 10px;
