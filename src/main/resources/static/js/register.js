@@ -28,35 +28,38 @@ $(function(){
 //检测该邮箱是否已注册
 function checkEmailExist(event){
     clearTimeout(event.data.timeout);
+    
     $('.btn_register_message').off('click',requestMessageSend);
     event.data.timeout=setTimeout(function(){
-        $.ajax({
-            type: "POST",
-            async : true,
-            // 设置的是请求参数
-            data: {email:event.data.email.val(),clientType:1},
-            dataType: "text",
-            url:"checkUser",
-            success: function(data) {
-                //alert(data);
-                if(data=="false")
-                {
-                   
-                    $('.email_check:eq(0)').html("该邮箱已被注册").css('display','inline').css('color','red').css('font-size','12px');
-                    return false;
+        if(checkEmailIsTrue()){
+            $.ajax({
+                type: "POST",
+                async : true,
+                // 设置的是请求参数
+                data: {email:event.data.email.val(),clientType:1},
+                dataType: "text",
+                url:"checkUser",
+                success: function(data) {
+                    //alert(data);
+                    if(data=="false")
+                    {
+                       
+                        $('.email_check:eq(0)').html("该邮箱已被注册").css('display','inline').css('color','red').css('font-size','12px');
+                        return false;
+                    }
+                    else
+                    {
+                        //btn_register_message绑定点击事件
+                        $('.btn_register_message').on('click',{email:event.data.email},requestMessageSend);
+                        $('.email_check:eq(0)').html("该邮箱可以使用").css('display','inline').css('color','green').css('font-size','12px');
+                    }
+                    
+                },
+                error : function(err) {
+                    alert("发生错误");
                 }
-                else
-                {
-                    //btn_register_message绑定点击事件
-                    $('.btn_register_message').on('click',{email:event.data.email},requestMessageSend);
-                    $('.email_check:eq(0)').html("该邮箱可以使用").css('display','inline').css('color','green').css('font-size','12px');
-                }
-                
-            },
-            error : function(err) {
-                alert("发生错误");
-            }
-        });
+            });
+        }
     },1000);
         
 }
@@ -151,6 +154,14 @@ function checkPassword(){
 //判断邮箱input的合法性
 function checkEmailIsTrue(){
     //loading
+    var check = /^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/; //
+        if (!check.test($('.r_email:eq(0)').val())) { 
+            $('.email_check:eq(0)').html("邮箱格式错误").css('display','inline').css('color','red').css('font-size','12px');
+            return false;
+        } else {
+            return true;
+        }
+
 }
 
 

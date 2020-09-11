@@ -8,6 +8,7 @@ window.onload=function(){
 
     //openOpacity();
     content.fadeIn(1000);
+    
     //opacity(content,0.1,1);
 
 
@@ -68,6 +69,9 @@ window.onload=function(){
     });
    }
 
+
+
+   
    //oldtest
    /*
    function openOpacity(){
