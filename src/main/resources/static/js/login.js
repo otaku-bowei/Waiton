@@ -54,12 +54,15 @@ window.onload=function(){
         if(ipassword.attr('type')=='password')
         {
             ipassword.attr('type','text');
-            $(this).css('background-image',"url(images/view.png)");
+            //$(this).css('background-image',"url(images/view.png)");
+            $(this).removeClass('icon-view_off').addClass('icon-view');
+
         }
         else
         {
             ipassword.attr('type','password');
-            $(this).css('background-image',"url(images/view_off.png)");
+            //$(this).css('background-image',"url(images/view_off.png)");
+            $(this).removeClass('icon-view').addClass('icon-view_off');
         }
         event.stopPropagation();
     });
