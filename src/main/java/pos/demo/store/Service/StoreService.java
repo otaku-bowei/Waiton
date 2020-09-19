@@ -1,12 +1,14 @@
 package pos.demo.store.Service;
 
 import org.apache.ibatis.annotations.Param;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pos.demo.common.DateFormat;
 import pos.demo.store.DAO.StoreMapper;
 
 @Service
+@MapperScan("pos.demo.store.DAO")
 public class StoreService {
     @Autowired
     StoreMapper storeMapper ;

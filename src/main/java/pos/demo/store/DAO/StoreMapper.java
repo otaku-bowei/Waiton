@@ -6,10 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-import javax.xml.bind.annotation.XmlInlineBinaryData;
 
 @Mapper
-@Component("pos.demo.store.DAO")
+@Component(value = "StoreMapper")
 public interface StoreMapper {
 
 
